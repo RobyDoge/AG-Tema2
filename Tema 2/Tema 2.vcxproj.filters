@@ -43,6 +43,9 @@
     <ClCompile Include="AdjacencyMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BreathFirstSearch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputMatrix.txt">
@@ -51,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdjacencyMatrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BreathFirstSearch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

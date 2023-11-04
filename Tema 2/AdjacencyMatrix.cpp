@@ -81,11 +81,11 @@ void AdjacencyMatrix::setInputMatrix(std::ifstream& input)
 				}
 				if(aux == '3')
 				{
-					m_valueNodeStart = m_numberOfNodes-1;
+					m_startNode = m_numberOfNodes-1;
 				}
 				else if(aux=='2')
 				{
-					m_valueNodesExist.push_back(m_numberOfNodes-1);
+					m_exitNodes.push_back(m_numberOfNodes-1);
 				}
 			}
 			
@@ -99,7 +99,17 @@ std::vector<std::vector<int>> AdjacencyMatrix::getAdjacencyMatrix() const
 	return m_adjacencyMatrix;
 }
 
-std::vector<std::vector<std::pair<int, int>>> AdjacencyMatrix::getInputMatrix() const
+std::vector<std::vector<std::pair<int, int>>>& AdjacencyMatrix::getInputMatrix() 
 {
 	return m_inputMatrix;
+}
+
+int AdjacencyMatrix::getStartNode() const
+{
+	return m_startNode;
+}
+
+std::vector<int> AdjacencyMatrix::getExistNodes() const
+{
+	return m_exitNodes;
 }

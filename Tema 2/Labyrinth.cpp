@@ -8,7 +8,7 @@ Labyrinth::Labyrinth(QWidget *parent)
 	std::ifstream input("inputMatrix.txt");
 	AdjacencyMatrix auxMatrix(input);
 	m_matrices = auxMatrix;
-    
+    m_stageOfProgram = false;
 	update();
 }
 
@@ -16,15 +16,30 @@ Labyrinth::~Labyrinth()
 {
 }
 
+void Labyrinth::mouseReleaseEvent(QMouseEvent* event)
+{
+	if(ui.startButton->isChecked())
+	{
+        m_stageOfProgram = true;
+        update();
+        m_stageOfProgram = false;
+        ui.startButton->setEnabled(false);
+        BreathFirstSearch::createPathsToExits(m_matrices);
+        update();
+	}
+}
+
 void Labyrinth::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
-    if (!ui.startButton->isChecked())
+    if (m_stageOfProgram)
     {
-        drawLabyrinth(painter);
-        const std::vector<std::pair<int, int>> nodeVector = drawGraphLabyrinth(painter);
-        drawArchGraphLabyrinth(painter, nodeVector);
+        return;
     }
+	drawLabyrinth(painter);
+	const std::vector<std::pair<int, int>> nodeVector = drawGraphLabyrinth(painter);
+	drawArchGraphLabyrinth(painter, nodeVector);
+    
 }
 
 void Labyrinth::drawLabyrinth(QPainter& painter)
@@ -121,6 +136,10 @@ QBrush Labyrinth::setBrushColor(const int specifier)
     {
         return Qt::red;
     }
+    case 4:
+    {
+        return Qt::darkGreen;
+    }
     default:
     {
         return Qt::blue;
@@ -144,6 +163,10 @@ QColor Labyrinth::setPenColor(const int specifier)
     case 2:
     {
         return Qt::red;
+    }
+    case 4:
+    {
+        return Qt::darkGreen;
     }
     default:
     {

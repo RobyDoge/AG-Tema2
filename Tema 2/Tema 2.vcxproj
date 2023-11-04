@@ -93,6 +93,7 @@
     <QtUic Include="Labyrinth.ui" />
     <QtMoc Include="Labyrinth.h" />
     <ClCompile Include="AdjacencyMatrix.cpp" />
+    <ClCompile Include="BreathFirstSearch.cpp" />
     <ClCompile Include="Labyrinth.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -101,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdjacencyMatrix.h" />
+    <ClInclude Include="BreathFirstSearch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

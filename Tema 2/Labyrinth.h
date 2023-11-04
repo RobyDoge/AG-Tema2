@@ -1,14 +1,15 @@
 #pragma once
-#include "AdjacencyMatrix.h"
-#include <QtWidgets/QMainWindow>
-#include "ui_Labyrinth.h"
 #include <fstream>
-#include <qradiobutton.h>
-#include <QPainter>
 #include <QMouseEvent>
-#include <vector>
-#include <string>
+#include <QPainter>
+#include <qradiobutton.h>
 #include <sstream>
+#include <string>
+#include <vector>
+#include <QtWidgets/QMainWindow>
+#include "AdjacencyMatrix.h"
+#include "BreathFirstSearch.h"
+#include "ui_Labyrinth.h"
 
 class Labyrinth : public QMainWindow
 {
@@ -17,7 +18,7 @@ class Labyrinth : public QMainWindow
 public:
     Labyrinth(QWidget *parent = nullptr);
     ~Labyrinth();
-
+    virtual void mouseReleaseEvent(QMouseEvent* event) override;
     virtual void paintEvent(QPaintEvent* event) override;
 	
 
@@ -34,8 +35,9 @@ private:
 
 
     Ui::LabyrinthClass ui;
-	QRadioButton* m_startButton = findChild<QRadioButton*>("startButton");
+	//QRadioButton* m_startButton = findChild<QRadioButton*>("startButton");
     AdjacencyMatrix m_matrices;
+    bool m_stageOfProgram;
 
     inline static int squareMeasurements = 30;
 };
